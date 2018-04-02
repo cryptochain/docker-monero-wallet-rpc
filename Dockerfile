@@ -21,4 +21,3 @@ RUN apt-get update \
 COPY config.conf /root
 
 ENTRYPOINT ["monero-wallet-rpc", "--config-file=/root/config.conf"]
-CMD ["--help"]
