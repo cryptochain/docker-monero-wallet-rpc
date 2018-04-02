@@ -18,5 +18,7 @@ RUN apt-get update \
     && apt-get clean autoclean \
     && rm -rf /var/lib/{apt,dpkg,cache,log}
 
-ENTRYPOINT ["monero-wallet-rpc", "--rpc-bind-ip=0.0.0.0", "--rpc-bind-port 28090", "--testnet", "--daemon-address monerod-testnet:28080", "--daemon-login admin1:123", "--confirm-external-bind"]
+COPY config.conf /root
+
+ENTRYPOINT ["monero-wallet-rpc", "--config-file=/root/config.conf"]
 CMD ["--help"]

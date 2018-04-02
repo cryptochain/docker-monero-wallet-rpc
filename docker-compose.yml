@@ -26,7 +26,7 @@ services:
       - bridge
       - web-services
     volumes:
-      - wallet-data-testnet:/monero-wallet-rpc
+      - wallet-data-testnet:/root/wallet
 
 networks:
   bridge:

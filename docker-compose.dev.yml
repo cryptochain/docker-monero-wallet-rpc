@@ -23,7 +23,7 @@ services:
       - 28090:28090
     tty: true
     volumes:
-      - wallet-data-testnet:/monero-wallet-rpc
+      - wallet-data-testnet:/root/wallet
     network_mode: "bridge"
 
 
