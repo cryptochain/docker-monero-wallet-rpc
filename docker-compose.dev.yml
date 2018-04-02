@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+  monero-wallet-rpc-testnet:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    deploy:
+      endpoint_mode: vip
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 10s
+      placement:
+        constraints: [node.hostname == vm01]
+    image: testing.wemic.io:5000/cryptochain/monero-wallet-rpc-testnet:latest
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "10"
+    ports:
+      - 28090:28090
+    tty: true
+    volumes:
+      - wallet-data-testnet:/monero-wallet-rpc
+    network_mode: "bridge"
+
+
+volumes:
+    wallet-data-testnet:
+      driver: local
